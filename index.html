@@ -1,0 +1,772 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Teddy Day - A Cuddly Surprise for My Chitti</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Poppins:wght@300;400;600;700&family=Comic+Neue:wght@700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #fff5f5 0%, #ffeaea 30%, #ffd6d6 100%);
+            color: #8b5a5a;
+            min-height: 100vh;
+            overflow-x: hidden;
+            padding: 20px;
+            position: relative;
+        }
+        
+        .teddy-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                radial-gradient(circle at 10% 20%, rgba(255, 182, 193, 0.15) 2px, transparent 2px),
+                radial-gradient(circle at 90% 80%, rgba(255, 182, 193, 0.15) 2px, transparent 2px);
+            background-size: 80px 80px;
+            z-index: -1;
+            opacity: 0.6;
+        }
+        
+        .heart-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                radial-gradient(circle at 20% 30%, rgba(255, 105, 180, 0.1) 3px, transparent 3px),
+                radial-gradient(circle at 80% 70%, rgba(255, 105, 180, 0.1) 3px, transparent 3px);
+            background-size: 100px 100px;
+            z-index: -1;
+            opacity: 0.4;
+        }
+        
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            text-align: center;
+            padding: 20px;
+            position: relative;
+            z-index: 1;
+        }
+        
+        header {
+            margin-bottom: 40px;
+            padding: 30px;
+            border-radius: 25px;
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 15px 35px rgba(219, 112, 147, 0.2);
+            border: 3px solid #ffb6c1;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        header::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 8px;
+            background: linear-gradient(90deg, #ffb6c1, #ff69b4, #ffb6c1);
+        }
+        
+        h1 {
+            font-family: 'Comic Neue', cursive;
+            font-size: 4rem;
+            color: #db7093;
+            margin-bottom: 15px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+            letter-spacing: 1px;
+        }
+        
+        .subtitle {
+            font-size: 1.4rem;
+            color: #8b5a5a;
+            margin-bottom: 20px;
+            font-weight: 300;
+        }
+        
+        .teddy-icon {
+            color: #a05252;
+            animation: teddyBounce 2s infinite;
+            display: inline-block;
+            font-size: 2.5rem;
+            margin: 0 10px;
+        }
+        
+        @keyframes teddyBounce {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            25% { transform: translateY(-10px) rotate(-5deg); }
+            75% { transform: translateY(-5px) rotate(5deg); }
+        }
+        
+        .message-box {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 25px;
+            padding: 40px;
+            margin: 30px 0;
+            box-shadow: 0 15px 35px rgba(219, 112, 147, 0.15);
+            position: relative;
+            overflow: hidden;
+            border: 3px solid #ffc0cb;
+            backdrop-filter: blur(5px);
+        }
+        
+        .message {
+            font-size: 1.4rem;
+            line-height: 1.9;
+            margin-bottom: 25px;
+            text-align: left;
+            padding: 0 20px;
+            color: #8b5a5a;
+        }
+        
+        .highlight {
+            color: #db7093;
+            font-weight: 700;
+            font-size: 1.5rem;
+            text-shadow: 0 0 10px rgba(219, 112, 147, 0.3);
+        }
+        
+        .signature {
+            font-family: 'Dancing Script', cursive;
+            font-size: 3rem;
+            color: #db7093;
+            text-align: right;
+            margin-top: 30px;
+            text-shadow: 0 0 15px rgba(219, 112, 147, 0.3);
+        }
+        
+        .teddy-family-section {
+            margin: 50px 0;
+            padding: 30px;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 25px;
+            box-shadow: 0 15px 35px rgba(219, 112, 147, 0.15);
+            border: 3px solid #ffb6c1;
+        }
+        
+        .teddy-family-title {
+            font-family: 'Comic Neue', cursive;
+            font-size: 2.8rem;
+            color: #db7093;
+            margin-bottom: 30px;
+            text-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        .teddy-family {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 25px;
+            margin: 30px auto;
+            max-width: 900px;
+            padding: 25px;
+            background: rgba(255, 240, 245, 0.9);
+            border-radius: 20px;
+            border: 2px solid #ffc0cb;
+            box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.05);
+        }
+        
+        .teddy-bear {
+            width: 120px;
+            height: 120px;
+            background: linear-gradient(135deg, #d2691e 0%, #8b4513 100%);
+            border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3.5rem;
+            cursor: pointer;
+            transition: all 0.4s ease;
+            box-shadow: 0 10px 20px rgba(139, 69, 19, 0.2);
+            position: relative;
+            overflow: hidden;
+            margin: 0 auto;
+        }
+        
+        .teddy-bear::before {
+            content: "";
+            position: absolute;
+            top: 15px;
+            left: 30px;
+            width: 30px;
+            height: 30px;
+            background: #fff;
+            border-radius: 50%;
+            box-shadow: 40px 0 0 #fff;
+        }
+        
+        .teddy-bear::after {
+            content: "";
+            position: absolute;
+            bottom: 20px;
+            left: 40px;
+            width: 40px;
+            height: 20px;
+            background: #fff;
+            border-radius: 50%;
+        }
+        
+        .teddy-bear:hover {
+            transform: translateY(-15px) scale(1.1);
+            box-shadow: 0 20px 30px rgba(139, 69, 19, 0.3);
+        }
+        
+        .teddy-bear.hugged {
+            transform: scale(0.9);
+            background: linear-gradient(135deg, #a0522d 0%, #cd853f 100%);
+            box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.2);
+        }
+        
+        .teddy-message {
+            display: none;
+            margin-top: 30px;
+            padding: 25px;
+            background: rgba(255, 240, 245, 0.95);
+            border-radius: 20px;
+            color: #8b5a5a;
+            font-size: 1.4rem;
+            line-height: 1.6;
+            border: 3px solid #db7093;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+            animation: fadeInUp 0.8s ease;
+        }
+        
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .hug-section {
+            margin: 50px 0;
+            padding: 30px;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 25px;
+            box-shadow: 0 15px 35px rgba(219, 112, 147, 0.15);
+            border: 3px solid #db7093;
+        }
+        
+        .hug-btn {
+            background: linear-gradient(135deg, #ffb6c1 0%, #db7093 100%);
+            color: white;
+            border: none;
+            padding: 22px 50px;
+            font-size: 1.6rem;
+            border-radius: 60px;
+            cursor: pointer;
+            transition: all 0.4s ease;
+            box-shadow: 0 10px 25px rgba(219, 112, 147, 0.4);
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            margin: 20px 0;
+            position: relative;
+            overflow: hidden;
+            font-family: 'Comic Neue', cursive;
+        }
+        
+        .hug-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+            transition: 0.5s;
+        }
+        
+        .hug-btn:hover::before {
+            left: 100%;
+        }
+        
+        .hug-btn:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 30px rgba(219, 112, 147, 0.6);
+        }
+        
+        .hug-btn:active {
+            transform: translateY(-2px);
+        }
+        
+        .hug-content {
+            display: none;
+            margin-top: 40px;
+            padding: 40px;
+            background: rgba(255, 240, 245, 0.95);
+            border-radius: 20px;
+            color: #8b5a5a;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+            animation: fadeIn 1.2s ease;
+            border: 3px solid #ffb6c1;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .hug-title {
+            font-family: 'Comic Neue', cursive;
+            font-size: 3rem;
+            color: #db7093;
+            margin-bottom: 30px;
+        }
+        
+        .giant-teddy {
+            font-size: 6rem;
+            margin: 30px 0;
+            animation: teddyHug 3s infinite ease-in-out;
+            filter: drop-shadow(0 5px 15px rgba(139, 69, 19, 0.3));
+        }
+        
+        @keyframes teddyHug {
+            0%, 100% { transform: translateY(0) scale(1) rotate(0deg); }
+            25% { transform: translateY(-15px) scale(1.05) rotate(-5deg); }
+            75% { transform: translateY(-10px) scale(1.03) rotate(5deg); }
+        }
+        
+        .real-teddy-promise {
+            background: linear-gradient(135deg, #ffb6c1, #db7093);
+            color: white;
+            padding: 25px;
+            border-radius: 20px;
+            margin: 30px 0;
+            border: 3px solid #fff;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+        
+        .teddy-parade {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin: 30px 0;
+        }
+        
+        .teddy-parade-item {
+            font-size: 2.5rem;
+            animation: teddyWalk 3s infinite;
+        }
+        
+        @keyframes teddyWalk {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            25% { transform: translateY(-10px) rotate(-5deg); }
+            75% { transform: translateY(-5px) rotate(5deg); }
+        }
+        
+        footer {
+            margin-top: 50px;
+            padding: 25px;
+            font-size: 1.1rem;
+            color: #8b5a5a;
+            opacity: 0.9;
+            border-top: 2px solid rgba(219, 112, 147, 0.3);
+        }
+        
+        .floating-teddies {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+        }
+        
+        /* Responsive design */
+        @media (max-width: 900px) {
+            .teddy-family {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+        
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 3rem;
+            }
+            
+            .teddy-family-title {
+                font-size: 2.2rem;
+            }
+            
+            .message {
+                font-size: 1.2rem;
+                padding: 0 10px;
+            }
+            
+            .teddy-family {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 20px;
+                padding: 20px;
+            }
+            
+            .teddy-bear {
+                width: 100px;
+                height: 100px;
+                font-size: 2.8rem;
+            }
+            
+            .giant-teddy {
+                font-size: 4.5rem;
+            }
+            
+            .hug-title {
+                font-size: 2.5rem;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .teddy-family {
+                grid-template-columns: repeat(1, 1fr);
+            }
+            
+            h1 {
+                font-size: 2.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Background elements -->
+    <div class="teddy-bg"></div>
+    <div class="heart-bg"></div>
+    
+    <!-- Floating teddies -->
+    <div class="floating-teddies" id="floatingTeddies"></div>
+    
+    <div class="container">
+        <header>
+            <h1>Happy Teddy Day, Chitti! <span class="teddy-icon">🧸</span></h1>
+            <p class="subtitle">A day to celebrate cuddles, comfort, and our adorable love</p>
+            <p class="subtitle">Just like a teddy bear, I'll always be there for you</p>
+        </header>
+        
+        <div class="message-box">
+            <p class="message">
+                My Cuddly <span class="highlight">Chitti</span>,<br><br>
+                On this special Teddy Day, I want to remind you that I'll always be your teddy bear - ready to give you comfort when you're sad, share joy when you're happy, and be your constant companion through all of life's adventures.
+                <br><br>
+                Just like a favorite teddy bear that we hold close, I want to be the one you turn to for comfort, support, and endless love. No matter what life brings, I promise to be as loyal and comforting as the softest teddy.
+                <br><br>
+                You make my heart feel as warm and fuzzy as hugging a teddy bear on a cold night. With you, every day is filled with the comfort of knowing I have my favorite person by my side.
+            </p>
+            <div class="signature">Your personal teddy bear</div>
+        </div>
+        
+        <div class="teddy-family-section">
+            <h2 class="teddy-family-title">Your Teddy Bear Family <span class="teddy-icon">🐻</span></h2>
+            <p style="font-size: 1.3rem; margin-bottom: 30px; color: #8b5a5a;">
+                Give each teddy a hug to reveal a special message!
+            </p>
+            
+            <div class="teddy-family" id="teddyFamily">
+                <!-- Teddy bears will be added by JavaScript -->
+            </div>
+            
+            <div class="teddy-message" id="teddyMessage">
+                <!-- Message will appear here when teddy is hugged -->
+            </div>
+        </div>
+        
+        <div class="hug-section">
+            <h2 style="font-size: 2.2rem; margin-bottom: 20px; color: #db7093;">
+                Your Special Teddy Day Hug 
+                <i class="fas fa-heart" style="color: #ff69b4;"></i>
+            </h2>
+            <p style="font-size: 1.3rem; margin-bottom: 30px; color: #8b5a5a;">
+                Ready for the biggest, warmest hug ever?
+            </p>
+            
+            <button class="hug-btn" id="hugBtn">
+                <i class="fas fa-hands"></i> Give Me A Virtual Hug <i class="fas fa-hands"></i>
+            </button>
+            
+            <div class="hug-content" id="hugContent">
+                <h3 class="hug-title">A Warm Hug for My Chitti</h3>
+                <div class="giant-teddy">🧸</div>
+                
+                <div style="font-size: 1.6rem; line-height: 1.7; margin: 30px 0; color: #8b5a5a;">
+                    My darling Chitti,<br>
+                    Consider this a warm, virtual hug from me to you! 
+                    Just like this giant teddy, I want to wrap you in comfort and love every single day.
+                </div>
+                
+                <div class="real-teddy-promise">
+                    <h3 style="font-size: 2rem; margin-bottom: 20px; color: #fff;">
+                        <i class="fas fa-gift"></i> My Real Teddy Promise <i class="fas fa-gift"></i>
+                    </h3>
+                    <p style="font-size: 1.4rem; line-height: 1.6;">
+                        <strong>I have a real, cuddly teddy bear waiting for you!</strong> 
+                        But more importantly, I promise to always be your human teddy bear - 
+                        ready with hugs when you need them, comfort when you're down, 
+                        and endless love every single day.
+                    </p>
+                    <p style="font-size: 1.4rem; margin-top: 20px;">
+                        Just like a teddy bear never leaves your side, I'll always be there for you!
+                    </p>
+                </div>
+                
+                <div class="teddy-parade">
+                    <div class="teddy-parade-item">🧸</div>
+                    <div class="teddy-parade-item">🐻</div>
+                    <div class="teddy-parade-item">🧸</div>
+                    <div class="teddy-parade-item">🐻</div>
+                    <div class="teddy-parade-item">🧸</div>
+                    <div class="teddy-parade-item">🐻</div>
+                </div>
+                
+                <div style="margin-top: 40px; padding: 25px; background: rgba(255, 182, 193, 0.2); border-radius: 15px; border: 2px solid #ffb6c1;">
+                    <p style="font-size: 1.5rem; color: #db7093;">
+                        <i class="fas fa-star" style="color: #ff69b4;"></i> 
+                        <strong>You are my favorite cuddle buddy, Chitti!</strong> 
+                        <i class="fas fa-star" style="color: #ff69b4;"></i>
+                    </p>
+                    <p style="font-size: 1.3rem; margin-top: 15px; color: #8b5a5a;">
+                        May our love always be as warm, comforting, and enduring as a favorite teddy bear.
+                    </p>
+                </div>
+            </div>
+        </div>
+        
+        <footer>
+            <p>Made with cuddles and love for Chitti - my favorite teddy bear</p>
+            <p>Teddy Day 2026 | Every hug with you feels like home</p>
+        </footer>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const teddyFamily = document.getElementById('teddyFamily');
+            const teddyMessage = document.getElementById('teddyMessage');
+            const hugBtn = document.getElementById('hugBtn');
+            const hugContent = document.getElementById('hugContent');
+            const floatingTeddies = document.getElementById('floatingTeddies');
+            
+            // Cuddly messages for each teddy
+            const teddyMessages = [
+                "You make my heart feel as warm as hugging a teddy bear.",
+                "I'll always be your teddy bear - ready with hugs whenever you need them.",
+                "Your love comforts me like my favorite childhood teddy.",
+                "With you, every day feels like a warm, fuzzy hug.",
+                "You're the teddy bear I never knew I needed but can't live without.",
+                "My love for you grows stronger, just like my attachment to my first teddy.",
+                "You are my safe place, my comfort zone, my human teddy bear.",
+                "Just like a teddy bear, you make everything better with your presence.",
+                "I promise to be as loyal to you as a teddy bear to its owner.",
+                "Your hugs are my favorite place in the whole world.",
+                "You make even the toughest days bearable, just like a teddy bear's comfort.",
+                "My heart does a happy dance every time I get to hug you.",
+                "You're softer than the softest teddy and warmer than the warmest hug.",
+                "With you by my side, I feel like I can face anything.",
+                "You're not just my love, you're my comfort, my peace, my everything."
+            ];
+            
+            // Create teddy bears
+            for (let i = 0; i < 12; i++) {
+                const teddyBear = document.createElement('div');
+                teddyBear.className = 'teddy-bear';
+                teddyBear.innerHTML = '🧸';
+                teddyBear.dataset.message = teddyMessages[i % teddyMessages.length];
+                teddyBear.dataset.index = i;
+                
+                // Add click event
+                teddyBear.addEventListener('click', function() {
+                    // Reset all teddies
+                    document.querySelectorAll('.teddy-bear').forEach(teddy => {
+                        teddy.classList.remove('hugged');
+                    });
+                    
+                    // Mark this teddy as hugged
+                    this.classList.add('hugged');
+                    
+                    // Show message
+                    teddyMessage.innerHTML = `
+                        <h3 style="color: #db7093; margin-bottom: 15px; font-family: 'Comic Neue', cursive;">
+                            Teddy Hug #${parseInt(this.dataset.index) + 1}
+                        </h3>
+                        <p>${this.dataset.message}</p>
+                        <div style="margin-top: 20px; font-size: 2rem; color: #ff69b4;">
+                            <i class="fas fa-heart"></i>
+                        </div>
+                    `;
+                    teddyMessage.style.display = 'block';
+                    
+                    // Create teddy particles
+                    createTeddyParticles(this);
+                    
+                    // Scroll to message
+                    teddyMessage.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                });
+                
+                teddyFamily.appendChild(teddyBear);
+            }
+            
+            // Create floating teddies
+            function createFloatingTeddies() {
+                const teddies = ['🧸', '🐻', '❤️', '🤗'];
+                
+                for (let i = 0; i < 12; i++) {
+                    setTimeout(() => {
+                        const teddy = document.createElement('div');
+                        teddy.innerHTML = teddies[Math.floor(Math.random() * teddies.length)];
+                        teddy.style.position = 'fixed';
+                        teddy.style.color = ['#db7093', '#ff69b4', '#8b4513'][Math.floor(Math.random() * 3)];
+                        teddy.style.fontSize = Math.random() * 30 + 20 + 'px';
+                        teddy.style.left = Math.random() * 100 + 'vw';
+                        teddy.style.top = '100vh';
+                        teddy.style.zIndex = '0';
+                        teddy.style.pointerEvents = 'none';
+                        teddy.style.opacity = '0.6';
+                        floatingTeddies.appendChild(teddy);
+                        
+                        // Animate teddy
+                        const animation = teddy.animate([
+                            { transform: 'translateY(0) rotate(0deg)', opacity: 0.6 },
+                            { transform: `translateY(-${window.innerHeight + 100}px) rotate(${Math.random() * 360}deg)`, opacity: 0 }
+                        ], {
+                            duration: Math.random() * 6000 + 5000,
+                            easing: 'cubic-bezier(0.215, 0.61, 0.355, 1)'
+                        });
+                        
+                        // Remove teddy after animation
+                        animation.onfinish = () => {
+                            teddy.remove();
+                        };
+                    }, i * 500);
+                }
+            }
+            
+            // Start creating floating teddies
+            createFloatingTeddies();
+            setInterval(createFloatingTeddies, 12000);
+            
+            // Create teddy particles
+            function createTeddyParticles(element) {
+                const rect = element.getBoundingClientRect();
+                const teddies = ['🧸', '🐻', '❤️', '🤗'];
+                
+                for (let i = 0; i < 8; i++) {
+                    setTimeout(() => {
+                        const particle = document.createElement('div');
+                        particle.innerHTML = teddies[Math.floor(Math.random() * teddies.length)];
+                        particle.style.position = 'fixed';
+                        particle.style.color = ['#db7093', '#ff69b4'][Math.floor(Math.random() * 2)];
+                        particle.style.fontSize = Math.random() * 25 + 20 + 'px';
+                        particle.style.left = (rect.left + rect.width/2) + 'px';
+                        particle.style.top = (rect.top + rect.height/2) + 'px';
+                        particle.style.zIndex = '9999';
+                        particle.style.pointerEvents = 'none';
+                        particle.style.opacity = '0';
+                        document.body.appendChild(particle);
+                        
+                        // Animate particle
+                        const angle = Math.random() * Math.PI * 2;
+                        const distance = Math.random() * 100 + 50;
+                        const targetX = Math.cos(angle) * distance;
+                        const targetY = Math.sin(angle) * distance;
+                        
+                        const fadeIn = particle.animate([
+                            { 
+                                opacity: 0, 
+                                transform: 'translate(0, 0) scale(0.5)' 
+                            },
+                            { 
+                                opacity: 1, 
+                                transform: `translate(${targetX}px, ${targetY}px) scale(1.2)` 
+                            },
+                            { 
+                                opacity: 0, 
+                                transform: `translate(${targetX * 1.5}px, ${targetY * 1.5}px) scale(0.5)` 
+                            }
+                        ], {
+                            duration: Math.random() * 1500 + 1000,
+                            easing: 'ease-out'
+                        });
+                        
+                        // Remove particle after animation
+                        fadeIn.onfinish = () => {
+                            particle.remove();
+                        };
+                    }, i * 100);
+                }
+            }
+            
+            // Reveal hug content when button is clicked
+            hugBtn.addEventListener('click', function() {
+                hugContent.style.display = 'block';
+                hugBtn.style.display = 'none';
+                
+                // Create teddy shower
+                createTeddyShower();
+                
+                // Scroll to hug content
+                hugContent.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            });
+            
+            // Create teddy shower
+            function createTeddyShower() {
+                const teddies = ['🧸', '🐻', '❤️', '🤗'];
+                
+                for (let i = 0; i < 25; i++) {
+                    setTimeout(() => {
+                        const teddy = document.createElement('div');
+                        teddy.innerHTML = teddies[Math.floor(Math.random() * teddies.length)];
+                        teddy.style.position = 'fixed';
+                        teddy.style.color = ['#db7093', '#ff69b4', '#8b4513'][Math.floor(Math.random() * 3)];
+                        teddy.style.fontSize = Math.random() * 35 + 25 + 'px';
+                        teddy.style.left = Math.random() * 100 + 'vw';
+                        teddy.style.top = '-50px';
+                        teddy.style.zIndex = '9998';
+                        teddy.style.pointerEvents = 'none';
+                        document.body.appendChild(teddy);
+                        
+                        // Animate teddy falling
+                        const fall = teddy.animate([
+                            { transform: 'translateY(0) rotate(0deg)', opacity: 1 },
+                            { transform: `translateY(${window.innerHeight + 50}px) rotate(${Math.random() * 360}deg)`, opacity: 0 }
+                        ], {
+                            duration: Math.random() * 4000 + 3000,
+                            easing: 'cubic-bezier(0.55, 0.085, 0.68, 0.53)'
+                        });
+                        
+                        // Remove teddy after animation
+                        fall.onfinish = () => {
+                            teddy.remove();
+                        };
+                    }, i * 150);
+                }
+            }
+            
+            // Auto-hug first teddy after a delay
+            setTimeout(() => {
+                const firstTeddy = document.querySelector('.teddy-bear');
+                if (firstTeddy) {
+                    firstTeddy.click();
+                }
+            }, 2000);
+            
+            // Add a pulsing animation to the hug button
+            setInterval(() => {
+                if (hugBtn.style.display !== 'none') {
+                    hugBtn.style.transform = 'scale(1.05)';
+                    setTimeout(() => {
+                        hugBtn.style.transform = 'scale(1)';
+                    }, 500);
+                }
+            }, 3000);
+        });
+    </script>
+</body>
+</html>
